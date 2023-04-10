@@ -9,6 +9,7 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { LinkContainer } from "react-router-bootstrap";
 import { Link, Routes, Route, useParams, useNavigate } from "react-router-dom";
+import Weather from "./WeatherAPI";
 
 export default function App() {
   return (
@@ -19,6 +20,8 @@ export default function App() {
       <DisplayCity />
       <br />
       <Form />
+      <br />
+      <Weather />
     </div>
   );
 }
