@@ -19,15 +19,15 @@ export default function Form() {
     const tempErrors = [];
     if (name.trim().length < 1) {
       tempErrors.push("Please enter a valid name");
-      //   e.preventDefault();
+         e.preventDefault();
     }
     if (email.trim().length < 1) {
       tempErrors.push("Please enter a valid email");
-      //   e.preventDefault();
+         e.preventDefault();
     }
     if (!selectedCity) {
       tempErrors.push("Please select a city");
-      //   e.preventDefault();
+         e.preventDefault();
     }
     setErrors(tempErrors);
     e.preventDefault();
@@ -59,6 +59,7 @@ export default function Form() {
             id="txtName"
             value={name}
             onChange={(e) => setName(e.target.value)}
+            required
           ></input>
         </div>
         <div>
@@ -70,6 +71,7 @@ export default function Form() {
             id="txtEmail"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            required
           ></input>
         </div>
         <label>
@@ -78,9 +80,11 @@ export default function Form() {
             value={selectedCity}
             onChange={(e) => setSelectedCity(e.target.value)}
           >
+            <option value="">Select a city</option>
             <option value="cairo">Cairo</option>
             <option value="newyork">New York</option>
             <option value="paris">Paris</option>
+            <option value="salvador">Salvador</option>
             <option value="sydney">Sydney</option>
             <option value="tokyo">Tokyo</option>
           </select>

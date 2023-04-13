@@ -1,4 +1,4 @@
-import "./App.css";
+
 import Salvador from "./Salvador.js";
 import Paris from "./Paris.js";
 import Cairo from "./Cairo.js";
