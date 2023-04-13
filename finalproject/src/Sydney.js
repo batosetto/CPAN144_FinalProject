@@ -3,11 +3,13 @@ import sydney1 from "./pictures/sydney1.jpg";
 import sydney2 from "./pictures/sydney2.jpg";
 import sydney3 from "./pictures/sydney3.jpg";
 
+
+
 export default function Sydney() {
   return (
     <div>
       <h1>
-        Sidney, Australia <img src={australia} width={35} />
+        Sydney, Australia <img src={australia} width={35} />
       </h1>
       <p>
         Welcome to Sydney, Australia's iconic harbor city where history meets

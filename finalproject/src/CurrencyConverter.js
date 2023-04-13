@@ -4,13 +4,18 @@ import "bootstrap/dist/css/bootstrap.css";
 import Button from "react-bootstrap/Button";
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
+import Collapse from 'react-bootstrap/Collapse';
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 
 
 export default function CurrencyConverter() {
   const [fromCurrency, setFromCurrency] = useState("");
   const [toCurrency, setToCurrency] = useState("");
-  const [amount, setAmount] = useState(0);
+  const [amount, setAmount] = useState(1);
   const [conversionRate, setConversionRate] = useState(0);
+  const [open, setOpen] = useState();
 
   const handleFromCurrencyChange = (event) => {
     setFromCurrency(event.target.value);
@@ -40,71 +45,65 @@ export default function CurrencyConverter() {
   };
 
   return (
-    <div className="currencyBlock">
-
-            <h2 className="currencyTitle">Currency Converter</h2>
+    <div >
+      <Container fluid>
+        <Row>
+          <Col></Col>
+          <Col md={10} className="currencyBlock">
+            <h2 className="title">Currency Converter</h2>
             <Form>
+              <InputGroup className="mb-3">
+                <InputGroup.Text>$</InputGroup.Text>
+                <Form.Control aria-label="Amount (to the nearest dollar)" id="amount"
+                  value={amount}
+                  onChange={handleAmountChange} />
+                <InputGroup.Text>.00</InputGroup.Text>
+              </InputGroup>
+
               <Form.Label>From:</Form.Label>
               <Form.Select id="from-currency"
-              value={fromCurrency}
-              onChange={handleFromCurrencyChange}>
+                value={fromCurrency}
+                onChange={handleFromCurrencyChange}>
                 {currencies.map(currency => (
-                <option key={currency} value={currency}>{currency}</option>
-              ))}  
+                  <option key={currency} value={currency}>{currency}</option>
+                ))}
               </Form.Select>
-            
-            {/* <label htmlFor="from-currency">From: </label>
-            <select id="from-currency"
-              value={fromCurrency}
-              onChange={handleFromCurrencyChange}>
-              {currencies.map(currency => (
-                <option key={currency} value={currency}>{currency}</option>
-              ))}
-            </select> */}
-            <br />
-            <Form.Label>To: </Form.Label>
-            <Form.Select id="to-currency"
-              value={toCurrency}
-              onChange={handletoCurrencyChange}>
-              {currencies.map(currency => (
-                <option key={currency} value={currency}>{currency}</option>
-              ))}  
-            </Form.Select>
-
-            {/* <label htmlFor="to-currency">To: </label>
-            <select id="to-currency"
-              value={toCurrency}
-              onChange={handletoCurrencyChange}>
-              {currencies.map(currency => (
-                <option key={currency} value={currency}>{currency}</option>
-              ))}
-            </select> */}
-
-            <br />
-            {/* <InputGroup htmlFor="amount" className="mb-3">
-              <InputGroup.Text>$</InputGroup.Text>
-              <Form.Control aria-label="Amount (to the nearest dollar)" />
-              <InputGroup.Text type="number"
-              id="amount"
-              value={amount}
-              onChange={handleAmountChange}>.00</InputGroup.Text>
-            </InputGroup> */}
-            <label htmlFor="amount">Amount: </label>
-            <input
-              type="number"
-              id="amount"
-              value={amount}
-              onChange={handleAmountChange}
-            />
-            <br />
+              <br />
+              <Form.Label>To: </Form.Label>
+              <Form.Select id="to-currency"
+                value={toCurrency}
+                onChange={handletoCurrencyChange}>
+                {currencies.map(currency => (
+                  <option key={currency} value={currency}>{currency}</option>
+                ))}
+              </Form.Select>
             </Form>
-            <Button 
-              onClick={handleConvert} 
-              variant="light"
-              className="button">Convert</Button>    
             <br />
+            <Button
+              className="button"
+              aria-controls="example-collapse-text"
+              aria-expanded={open}
+              variant="light"
+              onClick={() => {
+                handleConvert();
+                setOpen(!open);
+              }}
+            >
+              Convert
+            </Button>
 
-            <div>Conversion Rate: {conversionRate * amount}</div>
+            <Collapse in={open}>
+              <div className="collapseBox">
+                Total Amount:  <b>$ {(conversionRate * amount).toFixed(2)} </b>
+                <br />
+                Conversion Rate: <b>{(conversionRate).toFixed(2)}</b>
+              </div>
+            </Collapse>
+          </Col>
+          <Col></Col>
+        </Row>
+      </Container>
+
 
     </div>
   );
