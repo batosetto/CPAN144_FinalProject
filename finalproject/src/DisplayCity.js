@@ -1,4 +1,3 @@
-
 import Salvador from "./Salvador.js";
 import Paris from "./Paris.js";
 import Cairo from "./Cairo.js";
@@ -15,7 +14,7 @@ import React, { useState } from "react";
 
 export default function App() {
   return (
-    <div className="App">
+    <div>
       <CitySelector />
     </div>
   );
@@ -26,7 +25,6 @@ function DisplayCity() {
   return <Salvador />;
   //}
 }
-
 function CitySelector() {
   const [city, setCity] = useState();
   return (
