@@ -103,6 +103,7 @@ export default function CurrencyConverter() {
           <Col></Col>
         </Row>
       </Container>
+      <br />
 
 
     </div>

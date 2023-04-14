@@ -125,6 +125,11 @@ ul{
   font-family: $fontFamily;
   font-size: 20px; 
   height: auto;
+  margin-left: 50px;
+  margin-right: 50px;
+  margin-bottom: 10px;
+  padding-top: 15px;
+  padding-bottom: 5px;
 }
 
 h2 {
@@ -143,4 +148,18 @@ h3 {
   max-width: 600px;
   width: 100%;
   margin: 0 auto;
+}
+
+.weatherPage{
+  background-color: #8da6b7;
+  border-radius: 10px;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  color: #192e5b;
+  font-family: $fontFamily;
+  font-size: 20px; 
+  height: auto;
+  margin-left: 100px;
+  margin-right: 100px;
 }
